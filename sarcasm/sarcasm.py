@@ -1,4 +1,8 @@
+import string
+
 # Python3 program to Split string into characters
+
+
 def split(word):
     return {char for char in word}
 
@@ -40,9 +44,16 @@ def Convert(string):
 
 
 # input string
-str1 = "i did not make those sarcastic sentences. i got them off the web. i did however make this python 3 sarcasm detector. idk where to upload my code so this is as good as it will get. have fun."
+str1 = "I'm a little tea pot."
+# convert string to lowercase
+str1 = str1.lower()
 
-list_of_words = Convert(str1)  # convert string to list
+# remove punctuation from string
+table = str.maketrans(dict.fromkeys(string.punctuation))
+new_s = str1.translate(table)
+
+
+list_of_words = Convert(new_s)  # convert string to list
 
 first_word_letters = ""
 second_word_letters = ""
