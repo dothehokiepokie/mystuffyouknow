@@ -44,7 +44,7 @@ def Convert(string):
 
 
 # input string
-str1 = "I'm a little tea pot."
+str1 = "revenge is a dish best served cold"
 # convert string to lowercase
 str1 = str1.lower()
 
@@ -90,7 +90,8 @@ for y in range(len(list_of_words)):
     count = 0
     for x in string_of_overlapping_letters:
         if(x.isalnum()):
-            if(list_of_words[y].find(x) > -1):
+            if(x in list_of_words[y]):
+                print(x)
                 count += 1
     string_count = str(count)
     print(
