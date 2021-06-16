@@ -1,13 +1,7 @@
 import string
 
-
-def Convert(string):
-    li = list(string.split(" "))
-    return li
-
-
 # input string
-str1 = "This you have to understand. Theres only one way to hurt a man whos lost everything. Give him back something broken."
+str1 = "this finds shorter strings inside a longer unedited string to parse out a deeper hidden meaning in the original string."
 
 # convert string to lowercase
 str1 = str1.lower()
@@ -16,12 +10,6 @@ str1 = str1.lower()
 table = str.maketrans(dict.fromkeys(string.punctuation))
 new_string = str1.translate(table)
 new_string += " ."
-a = "a"
-e = "e"
-i = "i"
-o = "o"
-u = "u"
-y = "y"
 
 letter_string = ""
 vowel_1 = 0
@@ -30,18 +18,24 @@ count = 0
 count_2 = 0
 new_short_string = ""
 new_long_string = ""
+
+char_count_short = []
+char_count_long = []
+
 for letter in new_string:
     letter_string += letter
     if " " in letter:
+        number_of_letters_in_the_word = len(letter_string) - 1
+
         for word_letter in letter_string:
             if (word_letter in "aeiouy") & (vowel_1 > 1) & (consonant > 1) & (count_2 == 0):
-
-                new_long_string += letter_string
+                char_count_short.append(number_of_letters_in_the_word)
+                new_short_string += letter_string
                 count_2 += 1
 
             if (word_letter in "aeiouy") & (vowel_1 > 0) & (consonant > 0) & (count == 0):
-
-                new_short_string += letter_string
+                char_count_long.append(number_of_letters_in_the_word)
+                new_long_string += letter_string
                 count += 1
             if (word_letter in "bcdfghjklmnpqrstvwxz"):
                 consonant += 1
@@ -54,6 +48,54 @@ for letter in new_string:
         count_2 = 0
         letter_string = ""
 
+short_unique_set = set(char_count_short)
+short_unique_list = list(short_unique_set)
+short_sorted_unique_list = sorted(short_unique_list, reverse=True)
+
+long_unique_set = set(char_count_long)
+long_unique_list = list(long_unique_set)
+long_sorted_unique_list = sorted(long_unique_list, reverse=True)
+
+long_new_mix_string_long = ""
+short_new_mix_string_short = ""
+
+for letter in new_string:
+    letter_string += letter
+    if " " in letter:
+        number_of_letters_in_the_word = len(letter_string) - 1
+
+        for word_letter in letter_string:
+            if (word_letter in "aeiouy") & (vowel_1 > 1) & (consonant > 1) & (count_2 == 0):
+
+                if number_of_letters_in_the_word == short_sorted_unique_list[0]:
+                    short_new_mix_string_short += letter_string
+                elif number_of_letters_in_the_word == short_sorted_unique_list[1]:
+                    short_new_mix_string_short += letter_string
+                count_2 += 1
+
+            if (word_letter in "aeiouy") & (vowel_1 > 0) & (consonant > 0) & (count == 0):
+
+                if number_of_letters_in_the_word == long_sorted_unique_list[0]:
+                    long_new_mix_string_long += letter_string
+                elif number_of_letters_in_the_word == long_sorted_unique_list[1]:
+                    long_new_mix_string_long += letter_string
+                count += 1
+            if (word_letter in "bcdfghjklmnpqrstvwxz"):
+                consonant += 1
+            if (word_letter in "aeiouy"):
+                vowel_1 += 1
+
+        vowel_1 = 0
+        consonant = 0
+        count = 0
+        count_2 = 0
+        letter_string = ""
+
+
+print(new_long_string)
+print("_________")
+print(long_new_mix_string_long)
+print("_________")
 print(new_short_string)
 print("_________")
-print(new_long_string)
+print(short_new_mix_string_short)
