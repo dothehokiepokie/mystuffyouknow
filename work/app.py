@@ -298,7 +298,7 @@ def sarcasm(input):
 
 
 # input string
-str1 = "Theres a lady whos sure all that glitters is gold And shes buying a stairway to Heaven"
+str1 = "Mr. Crowley, what went on in your head? Oh, Mr. Crowley, did you talk to the dead? Your life style to me, seemed so tragic With the thrill of it all You fooled all the people with magic Yeah, you waited on Satans call Mr. Charming, did you think you were pure? Mr. Alarming, in nocturnal rapport Uncovering things that were sacred Manifest on this Earth Conceived in the eye of a secret And they scattered the afterbirth Mr. Crowley, wont you ride my white horse? Mr. Crowley, its symbolic, of course Approaching a time that is classic I hear that maidens call Approaching a time that is drastic Standing with their backs to the wall Was it polemically sent? I wanna know what you meant I wanna know, I wanna know what you meant, yeah"
 
 # convert string to lowercase
 str1 = str1.lower()
@@ -402,15 +402,9 @@ for letter in new_string:
 
 print(new_long_string)
 print("_________")
-print(sarcasm(new_long_string))
-print("_________")
 print(long_new_mix_string_long)
 print("_________")
-print(sarcasm(long_new_mix_string_long))
-print("_________")
 print(new_short_string)
-print("_________")
-print(sarcasm(new_short_string))
 print("_________")
 print(short_new_mix_string_short)
 print("_________")
