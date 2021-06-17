@@ -44,7 +44,7 @@ def Convert(string):
 
 
 # input string
-str1 = "Theres a lady whos sure all that glitters is gold And shes buying a stairway to Heaven"
+str1 = "That's just what I needed today!"
 # convert string to lowercase
 str1 = str1.lower()
 
@@ -123,17 +123,17 @@ for y in range(len(list_of_words)):
     # print(
     #    "\"" + list_of_words[y] + "\"" + " has this many matching sarcastic letter " + string_count)
 
-a_list = list(sorted(a_set.items(), key=lambda kv: kv[1], reverse=True))
+a_list = list(sorted(a_set.items(), key=lambda kv: kv[1]))
 
-e_list = list(sorted(e_set.items(), key=lambda kv: kv[1], reverse=True))
+e_list = list(sorted(e_set.items(), key=lambda kv: kv[1]))
 
-i_list = list(sorted(i_set.items(), key=lambda kv: kv[1], reverse=True))
+i_list = list(sorted(i_set.items(), key=lambda kv: kv[1]))
 
-o_list = list(sorted(o_set.items(), key=lambda kv: kv[1], reverse=True))
+o_list = list(sorted(o_set.items(), key=lambda kv: kv[1]))
 
-u_list = list(sorted(u_set.items(), key=lambda kv: kv[1], reverse=True))
+u_list = list(sorted(u_set.items(), key=lambda kv: kv[1]))
 
-y_list = list(sorted(y_set.items(), key=lambda kv: kv[1], reverse=True))
+y_list = list(sorted(y_set.items(), key=lambda kv: kv[1]))
 
 aeiouy_list = a_list + e_list + i_list + o_list + u_list + y_list
 thin_list = []
