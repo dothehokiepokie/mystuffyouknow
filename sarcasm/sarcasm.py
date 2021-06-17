@@ -44,7 +44,7 @@ def Convert(string):
 
 
 # input string
-str1 = "revenge is a dish best served cold"
+str1 = "Theres a lady whos sure all that glitters is gold And shes buying a stairway to Heaven"
 # convert string to lowercase
 str1 = str1.lower()
 
@@ -84,6 +84,14 @@ string_of_overlapping_letters = str(overlapping_letters)
 print("these are the overlapping sarcastic letters: " +
       string_of_overlapping_letters)
 
+
+a_set = {}
+e_set = {}
+i_set = {}
+o_set = {}
+u_set = {}
+y_set = {}
+char_frequency = {}
 # finding the word in the string with the most matching letters
 # first i pass the single word into the for loop
 for y in range(len(list_of_words)):
@@ -91,8 +99,195 @@ for y in range(len(list_of_words)):
     for x in string_of_overlapping_letters:
         if(x.isalnum()):
             if(x in list_of_words[y]):
-                print(x)
+                # print(x)
                 count += 1
     string_count = str(count)
-    print(
-        "\"" + list_of_words[y] + "\"" + " has this many matching sarcastic letter " + string_count)
+    if "a" in list_of_words[y]:
+        if list_of_words[y] not in a_set:
+            a_set[list_of_words[y]] = string_count
+    if "e" in list_of_words[y]:
+        if list_of_words[y] not in e_set:
+            e_set[list_of_words[y]] = string_count
+    if "i" in list_of_words[y]:
+        if list_of_words[y] not in i_set:
+            i_set[list_of_words[y]] = string_count
+    if "o" in list_of_words[y]:
+        if list_of_words[y] not in o_set:
+            o_set[list_of_words[y]] = string_count
+    if "u" in list_of_words[y]:
+        if list_of_words[y] not in u_set:
+            u_set[list_of_words[y]] = string_count
+    if "" in list_of_words[y]:
+        if list_of_words[y] not in y_set:
+            y_set[list_of_words[y]] = string_count
+    # print(
+    #    "\"" + list_of_words[y] + "\"" + " has this many matching sarcastic letter " + string_count)
+
+a_list = list(sorted(a_set.items(), key=lambda kv: kv[1], reverse=True))
+
+e_list = list(sorted(e_set.items(), key=lambda kv: kv[1], reverse=True))
+
+i_list = list(sorted(i_set.items(), key=lambda kv: kv[1], reverse=True))
+
+o_list = list(sorted(o_set.items(), key=lambda kv: kv[1], reverse=True))
+
+u_list = list(sorted(u_set.items(), key=lambda kv: kv[1], reverse=True))
+
+y_list = list(sorted(y_set.items(), key=lambda kv: kv[1], reverse=True))
+
+aeiouy_list = a_list + e_list + i_list + o_list + u_list + y_list
+thin_list = []
+count = 0
+for value in aeiouy_list:
+    for value_2 in thin_list:
+        if value[0] == value_2[0]:
+            count = 1
+    if count == 0:
+        thin_list.append(value)
+    count = 0
+string_1 = ""
+string_2 = ""
+string_3 = ""
+string_4 = ""
+final_string = ""
+
+count_word_one = 0
+count_word_two = 0
+count_word_three = 0
+count_word_four = 0
+len_word_one = 0
+len_word_two = 0
+len_word_three = 0
+len_word_four = 0
+
+for value in thin_list:
+    if count_word_one == 0:
+        count_word_one = 1
+        if value[1] != "0":
+            string_1 += " "
+            string_1 += value[0]
+            string_1 += " "
+            string_1 += value[1]
+            string_1 += "\n"
+        len_word_one = len(value[0])
+
+        if value == thin_list[-1]:
+            final_string += value[0]
+
+    elif count_word_two == 0:
+        count_word_two = 1
+        if value[1] != "0":
+            string_2 += " "
+            string_2 += value[0]
+            string_2 += " "
+            string_2 += value[1]
+            string_2 += "\n"
+        len_word_two = len(value[0])
+
+        if value == thin_list[-1]:
+            if len_word_one > len_word_two:
+                string_1 += string_2
+                final_string += string_1
+            else:
+                string_2 += string_1
+                final_string += string_2
+
+    elif count_word_three == 0:
+        count_word_three = 1
+        if value[1] != "0":
+            string_3 += " "
+            string_3 += value[0]
+            string_3 += " "
+            string_3 += value[1]
+            string_3 += "\n"
+        len_word_three = len(value[0])
+
+        if value == thin_list[-1]:
+            if len_word_one > len_word_two:
+                string_1 += string_2
+                string_1 += string_3
+                final_string += string_1
+            else:
+                string_2 += string_1
+                string_2 += string_3
+                final_string += string_2
+
+    elif count_word_four == 0:
+        count_word_four = 1
+        if value[1] != "0":
+            string_4 += " "
+            string_4 += value[0]
+            string_4 += " "
+            string_4 += value[1]
+            string_4 += "\n"
+        len_word_four = len(value[0])
+
+        if len_word_one > len_word_two:
+            string_1 += string_2
+            if len_word_three > len_word_four:
+                string_4 += string_3
+                string_1 += string_4
+                final_string += string_1
+                count_word_one = 0
+                count_word_two = 0
+                count_word_three = 0
+                count_word_four = 0
+                len_word_one = 0
+                len_word_two = 0
+                len_word_three = 0
+                len_word_four = 0
+                string_1 = ""
+                string_2 = ""
+                string_3 = ""
+                string_4 = ""
+            else:
+                string_3 += string_4
+                string_1 += string_3
+                final_string += string_1
+                count_word_one = 0
+                count_word_two = 0
+                count_word_three = 0
+                count_word_four = 0
+                len_word_one = 0
+                len_word_two = 0
+                len_word_three = 0
+                len_word_four = 0
+                string_1 = ""
+                string_2 = ""
+                string_3 = ""
+                string_4 = ""
+        else:
+            string_2 += string_1
+            if len_word_three > len_word_four:
+                string_4 += string_3
+                string_2 += string_4
+                final_string += string_2
+                count_word_one = 0
+                count_word_two = 0
+                count_word_three = 0
+                count_word_four = 0
+                len_word_one = 0
+                len_word_two = 0
+                len_word_three = 0
+                len_word_four = 0
+                string_1 = ""
+                string_2 = ""
+                string_3 = ""
+                string_4 = ""
+            else:
+                string_3 += string_4
+                string_2 += string_3
+                final_string += string_2
+                count_word_one = 0
+                count_word_two = 0
+                count_word_three = 0
+                count_word_four = 0
+                len_word_one = 0
+                len_word_two = 0
+                len_word_three = 0
+                len_word_four = 0
+                string_1 = ""
+                string_2 = ""
+                string_3 = ""
+                string_4 = ""
+print(final_string)
